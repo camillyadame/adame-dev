@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Adame.dev
 
-## Getting Started
+> Transformando problemas reais em soluções digitais.
 
-First, run the development server:
+Portfólio e presença digital da **Adame.dev**, estúdio de tecnologia criado por Camilly Adame para desenvolver soluções digitais pensadas a partir de problemas reais de pequenos negócios e profissionais.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Sobre o projeto
+
+A Adame.dev não parte da ferramenta. O processo começa entendendo a rotina, o problema e o que precisa funcionar melhor para então definir a solução mais adequada.
+
+O site apresenta serviços, processo de trabalho, projetos reais e cases de desenvolvimento, além de centralizar os canais de contato do estúdio.
+
+### Soluções
+
+- Sites e landing pages
+- Automações e integrações
+- Sistemas personalizados
+- Soluções combinando presença digital e processos internos
+
+## Projetos em destaque
+
+### Studio CM
+Site para um estúdio de beleza com duas profissionais, serviços e agendas diferentes. A solução organiza a apresentação dos serviços e integra o fluxo de agendamento ao Google Calendar.
+
+### ADA Repair
+Sistema interno para gestão de assistência técnica, incluindo clientes, aparelhos, ordens de serviço, estoque, fornecedores e outros fluxos operacionais. Por ser um sistema privado, é apresentado publicamente apenas como case.
+
+### SEIVA
+Produto digital autoral de estudos com IA e gamificação, atualmente em desenvolvimento.
+
+## Stack
+
+`Next.js` · `React` · `TypeScript` · `Tailwind CSS` · `Vercel`
+
+## Identidade
+
+```text
+problema real
+    ↓
+entender
+    ↓
+planejar
+    ↓
+construir
+    ↓
+solução digital_
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A identidade da Adame.dev combina uma base gráfica escura e minimalista com linguagem de produto digital e pequenos acentos inspirados em interfaces e código — tecnologia com personalidade, sem perder clareza profissional.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Acesse
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Site:** https://adamedev.com.br  
+**Instagram:** https://instagram.com/adame.dev  
+**Contato:** adame.dev@gmail.com
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`adame.dev_` — tecnologia com propósito, não só presença online.
