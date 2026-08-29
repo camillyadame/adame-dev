@@ -1,0 +1,17 @@
+
+# Build
+.next/
+tsconfig.tsbuildinfo
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+.env.production
+.env.development
+
+# OS / Editor
+.DS_Store
+*.log
