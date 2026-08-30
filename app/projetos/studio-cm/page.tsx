@@ -1,4 +1,96 @@
-import Image from "next/image"; import Link from "next/link"; import { ArrowLeft, ExternalLink } from "lucide-react"; import { projects } from "@/data/projects";
-const project=projects[0];
-export const metadata={title:"Studio CM — Case"};
-export default function Page(){return <main className="min-h-screen bg-graphite text-offwhite"><div className="container-page py-10 md:py-16"><Link href="/#projetos" className="inline-flex items-center gap-2 text-sm text-offwhite/55 hover:text-lime"><ArrowLeft size={15}/> voltar aos projetos</Link><p className="mt-14 font-mono text-xs uppercase tracking-[.2em] text-pink">case_01</p><h1 className="mt-4 font-display text-4xl font-bold sm:text-6xl">Studio CM</h1><p className="mt-4 max-w-2xl text-lg leading-relaxed text-offwhite/60">Um site que não termina na vitrine: organiza a jornada até o agendamento e conversa com a agenda real das profissionais.</p><div className="mt-10 grid gap-5 md:grid-cols-2"><div className="border border-offwhite/10 p-6"><p className="font-mono text-xs text-lime">PROBLEMA_</p><p className="mt-3 leading-relaxed text-offwhite/70">{project.problem}</p></div><div className="border border-offwhite/10 p-6"><p className="font-mono text-xs text-pink">SOLUÇÃO_</p><p className="mt-3 leading-relaxed text-offwhite/70">{project.solution}</p></div></div><div className="mt-12 space-y-5">{project.images.map((im,i)=><div key={im.src} className="overflow-hidden border border-offwhite/10 bg-black/20 p-2"><Image src={im.src} alt={im.alt} width={1920} height={1080} className="h-auto w-full" priority={i===0}/></div>)}</div><div className="mt-10 flex flex-wrap gap-2">{project.stack.map(x=><span key={x} className="rounded-full border border-offwhite/15 px-3 py-1 font-mono text-xs text-offwhite/50">{x}</span>)}</div><a href={project.liveHref} target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 text-sm font-semibold text-graphite">visitar projeto <ExternalLink size={15}/></a></div></main>}
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink } from "lucide-react";
+import { projects } from "@/data/projects";
+
+const project = projects[0];
+
+export const metadata: Metadata = {
+  title: "Studio CM — Case",
+  description:
+    "Case de site profissional para estúdio de beleza com fluxo de agendamento e integração com Google Calendar.",
+  alternates: {
+    canonical: "/projetos/studio-cm",
+  },
+  openGraph: {
+    title: "Studio CM — Case | Adame.dev",
+    description:
+      "Site profissional com fluxo de agendamento e integração com Google Calendar.",
+    url: "/projetos/studio-cm",
+  },
+};
+
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-graphite text-offwhite">
+      <div className="container-page py-10 md:py-16">
+        <Link
+          href="/#projetos"
+          className="inline-flex items-center gap-2 text-sm text-offwhite/55 hover:text-lime"
+        >
+          <ArrowLeft size={15} /> voltar aos projetos
+        </Link>
+
+        <p className="mt-14 font-mono text-xs uppercase tracking-[.2em] text-pink">
+          case_01
+        </p>
+        <h1 className="mt-4 font-display text-4xl font-bold sm:text-6xl">
+          Studio CM
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-offwhite/60">
+          Um site que não termina na vitrine: organiza a jornada até o agendamento e conversa com a agenda real das profissionais.
+        </p>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="border border-offwhite/10 p-6">
+            <p className="font-mono text-xs text-lime">PROBLEMA_</p>
+            <p className="mt-3 leading-relaxed text-offwhite/70">{project.problem}</p>
+          </div>
+          <div className="border border-offwhite/10 p-6">
+            <p className="font-mono text-xs text-pink">SOLUÇÃO_</p>
+            <p className="mt-3 leading-relaxed text-offwhite/70">{project.solution}</p>
+          </div>
+        </div>
+
+        <div className="mt-12 space-y-5">
+          {project.images.map((im, i) => (
+            <div
+              key={im.src}
+              className="overflow-hidden border border-offwhite/10 bg-black/20 p-2"
+            >
+              <Image
+                src={im.src}
+                alt={im.alt}
+                width={1920}
+                height={1080}
+                className="h-auto w-full"
+                priority={i === 0}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap gap-2">
+          {project.stack.map((x) => (
+            <span
+              key={x}
+              className="rounded-full border border-offwhite/15 px-3 py-1 font-mono text-xs text-offwhite/50"
+            >
+              {x}
+            </span>
+          ))}
+        </div>
+
+        <a
+          href={project.liveHref}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-10 inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 text-sm font-semibold text-graphite"
+        >
+          visitar projeto <ExternalLink size={15} />
+        </a>
+      </div>
+    </main>
+  );
+}
