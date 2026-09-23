@@ -41,23 +41,9 @@ export default function Services() {
                   {service.description}
                 </p>
               </div>
-
-              <div className="col-span-2 mt-4 sm:col-span-1 sm:mt-0 sm:text-right">
-                <p className="font-mono text-[10px] uppercase tracking-widest text-offwhite/35">
-                  a partir de
-                </p>
-                <p className="font-display text-xl font-bold text-offwhite">
-                  {service.priceFrom}
-                </p>
-              </div>
             </div>
           ))}
         </div>
-
-        <p className="mx-auto mt-8 max-w-2xl text-center text-xs text-offwhite/40">
-          Valores iniciais para projetos de escopo essencial. O investimento
-          final varia conforme funcionalidades, integrações e complexidade.
-        </p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-2 text-sm text-offwhite/60 sm:flex-row">
           <span>Não encontrou o que precisa?</span>
