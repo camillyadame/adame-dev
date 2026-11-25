@@ -1,0 +1,278 @@
+{
+ "fonte": "INMET, Dados Históricos. Bataguassu (A759) 2013–2025; Presidente Prudente (A707) 2003–2025.",
+ "mensal": [
+  {
+   "mes": 1,
+   "bons_praia": 73.0,
+   "bons_passeio": 60.0,
+   "dias_avaliados": 281,
+   "temp_max": 33.0,
+   "temp_min": 22.2,
+   "sensacao_max": 34.4,
+   "chuva_mm": 159.0,
+   "dias_chuva": 11.4
+  },
+  {
+   "mes": 2,
+   "bons_praia": 67.0,
+   "bons_passeio": 57.0,
+   "dias_avaliados": 283,
+   "temp_max": 32.5,
+   "temp_min": 22.2,
+   "sensacao_max": 34.2,
+   "chuva_mm": 153.0,
+   "dias_chuva": 11.6
+  },
+  {
+   "mes": 3,
+   "bons_praia": 79.0,
+   "bons_passeio": 67.0,
+   "dias_avaliados": 293,
+   "temp_max": 32.5,
+   "temp_min": 21.8,
+   "sensacao_max": 34.0,
+   "chuva_mm": 100.0,
+   "dias_chuva": 9.0
+  },
+  {
+   "mes": 4,
+   "bons_praia": 81.0,
+   "bons_passeio": 78.0,
+   "dias_avaliados": 297,
+   "temp_max": 30.4,
+   "temp_min": 19.9,
+   "sensacao_max": 30.7,
+   "chuva_mm": 108.0,
+   "dias_chuva": 6.8
+  },
+  {
+   "mes": 5,
+   "bons_praia": 80.0,
+   "bons_passeio": 84.0,
+   "dias_avaliados": 354,
+   "temp_max": 28.1,
+   "temp_min": 17.4,
+   "sensacao_max": 27.7,
+   "chuva_mm": 63.0,
+   "dias_chuva": 4.9
+  },
+  {
+   "mes": 6,
+   "bons_praia": 83.0,
+   "bons_passeio": 85.0,
+   "dias_avaliados": 333,
+   "temp_max": 27.2,
+   "temp_min": 16.3,
+   "sensacao_max": 26.5,
+   "chuva_mm": 47.0,
+   "dias_chuva": 4.3
+  },
+  {
+   "mes": 7,
+   "bons_praia": 86.0,
+   "bons_passeio": 89.0,
+   "dias_avaliados": 330,
+   "temp_max": 27.5,
+   "temp_min": 15.2,
+   "sensacao_max": 26.3,
+   "chuva_mm": 29.0,
+   "dias_chuva": 2.9
+  },
+  {
+   "mes": 8,
+   "bons_praia": 84.0,
+   "bons_passeio": 84.0,
+   "dias_avaliados": 341,
+   "temp_max": 29.2,
+   "temp_min": 16.1,
+   "sensacao_max": 27.8,
+   "chuva_mm": 43.0,
+   "dias_chuva": 3.4
+  },
+  {
+   "mes": 9,
+   "bons_praia": 79.0,
+   "bons_passeio": 74.0,
+   "dias_avaliados": 330,
+   "temp_max": 31.6,
+   "temp_min": 18.7,
+   "sensacao_max": 30.3,
+   "chuva_mm": 88.0,
+   "dias_chuva": 6.4
+  },
+  {
+   "mes": 10,
+   "bons_praia": 73.0,
+   "bons_passeio": 65.0,
+   "dias_avaliados": 341,
+   "temp_max": 31.7,
+   "temp_min": 20.4,
+   "sensacao_max": 31.7,
+   "chuva_mm": 142.0,
+   "dias_chuva": 7.8
+  },
+  {
+   "mes": 11,
+   "bons_praia": 69.0,
+   "bons_passeio": 59.0,
+   "dias_avaliados": 330,
+   "temp_max": 31.8,
+   "temp_min": 20.8,
+   "sensacao_max": 32.3,
+   "chuva_mm": 151.0,
+   "dias_chuva": 9.8
+  },
+  {
+   "mes": 12,
+   "bons_praia": 69.0,
+   "bons_passeio": 54.0,
+   "dias_avaliados": 320,
+   "temp_max": 32.6,
+   "temp_min": 22.0,
+   "sensacao_max": 33.8,
+   "chuva_mm": 172.0,
+   "dias_chuva": 11.7
+  }
+ ],
+ "anual": [
+  {
+   "ano": 2003,
+   "dias_validos": 87,
+   "dias_35": 2,
+   "completo": false
+  },
+  {
+   "ano": 2004,
+   "dias_validos": 41,
+   "dias_35": 0,
+   "completo": false
+  },
+  {
+   "ano": 2005,
+   "dias_validos": 347,
+   "dias_35": 16,
+   "completo": true
+  },
+  {
+   "ano": 2006,
+   "dias_validos": 345,
+   "dias_35": 19,
+   "completo": true
+  },
+  {
+   "ano": 2007,
+   "dias_validos": 363,
+   "dias_35": 22,
+   "completo": true
+  },
+  {
+   "ano": 2008,
+   "dias_validos": 366,
+   "dias_35": 18,
+   "completo": true
+  },
+  {
+   "ano": 2009,
+   "dias_validos": 363,
+   "dias_35": 6,
+   "completo": true
+  },
+  {
+   "ano": 2010,
+   "dias_validos": 338,
+   "dias_35": 12,
+   "completo": true
+  },
+  {
+   "ano": 2011,
+   "dias_validos": 365,
+   "dias_35": 12,
+   "completo": true
+  },
+  {
+   "ano": 2012,
+   "dias_validos": 366,
+   "dias_35": 27,
+   "completo": true
+  },
+  {
+   "ano": 2013,
+   "dias_validos": 363,
+   "dias_35": 13,
+   "completo": true
+  },
+  {
+   "ano": 2014,
+   "dias_validos": 365,
+   "dias_35": 27,
+   "completo": true
+  },
+  {
+   "ano": 2015,
+   "dias_validos": 360,
+   "dias_35": 35,
+   "completo": true
+  },
+  {
+   "ano": 2016,
+   "dias_validos": 305,
+   "dias_35": 21,
+   "completo": false
+  },
+  {
+   "ano": 2017,
+   "dias_validos": 365,
+   "dias_35": 17,
+   "completo": true
+  },
+  {
+   "ano": 2018,
+   "dias_validos": 365,
+   "dias_35": 16,
+   "completo": true
+  },
+  {
+   "ano": 2019,
+   "dias_validos": 365,
+   "dias_35": 57,
+   "completo": true
+  },
+  {
+   "ano": 2020,
+   "dias_validos": 366,
+   "dias_35": 46,
+   "completo": true
+  },
+  {
+   "ano": 2021,
+   "dias_validos": 365,
+   "dias_35": 40,
+   "completo": true
+  },
+  {
+   "ano": 2022,
+   "dias_validos": 306,
+   "dias_35": 11,
+   "completo": false
+  },
+  {
+   "ano": 2023,
+   "dias_validos": 365,
+   "dias_35": 49,
+   "completo": true
+  },
+  {
+   "ano": 2024,
+   "dias_validos": 353,
+   "dias_35": 58,
+   "completo": true
+  },
+  {
+   "ano": 2025,
+   "dias_validos": 362,
+   "dias_35": 38,
+   "completo": true
+  }
+ ],
+ "por_hora": null
+}

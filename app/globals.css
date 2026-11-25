@@ -433,3 +433,13 @@ section[id] {
     animation: none !important;
   }
 }
+
+/* ---------- página do projeto de clima ---------- */
+.clima-bar {
+  transition: height 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), background-color 0.25s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clima-bar {
+    transition: none;
+  }
+}

@@ -103,7 +103,21 @@ function Projects() {
           ))}
         </div>
 
-        <div className="mt-28 border-t border-line pt-12 sm:mt-36">
+        <div data-reveal className="mt-28 border-t border-line pt-12 sm:mt-36">
+          <p className="label">ciência de dados</p>
+          <div className="mt-8 grid items-end gap-6 md:grid-cols-[1fr_auto] md:gap-16">
+            <div>
+              <h3 className="headline text-[30px] sm:text-[36px]">Clima e turismo em Presidente Epitácio</h3>
+              <p className="mt-4 max-w-[40rem] leading-relaxed text-text/90">
+                23 anos de dados do INMET para responder quando visitar a cidade e a que horas ir à orla, com um
+                índice de conforto para dois perfis de visitante. Página interativa, com método e limitações.
+              </p>
+            </div>
+            <Button href="/projetos/clima-turismo-epitacio">ver análise →</Button>
+          </div>
+        </div>
+
+        <div className="mt-20 border-t border-line pt-12">
           <p data-reveal className="label">
             em construção
           </p>
