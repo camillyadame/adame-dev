@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Pill } from "@/components/ui";
 import { inProgress, projects } from "@/data/projects";
-import { education, experience, site, stack } from "@/data/site";
+import { education, experience, languages, site, stack } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Currículo",
@@ -161,6 +161,9 @@ export default function CvPage() {
               </div>
             ))}
           </dl>
+        </Section>
+        <Section title="idiomas">
+          <p>{languages.join(" · ")}</p>
         </Section>
       </main>
       <div className="print:hidden">

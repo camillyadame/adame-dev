@@ -21,6 +21,8 @@ export const education = {
   topics: "Estruturas de dados, programação orientada a objetos, sistemas computacionais, estatística e probabilidade.",
 };
 
+export const languages = ["Português nativo", "Inglês básico, em estudo"];
+
 export type Experience = { when: string; org: string; role: string; text: string };
 
 export const experience: Experience[] = [
