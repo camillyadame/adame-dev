@@ -10,6 +10,7 @@ export type Project = {
   stack: string[];
   highlights: string[];
   cover: { src: string; alt: string };
+  url: string;
   gallery: { src: string; alt: string }[];
   links: { label: string; href: string }[];
   context: string[];
@@ -37,13 +38,14 @@ export const projects: Project[] = [
       "QR code por ordem para o cliente acompanhar o conserto",
     ],
     cover: {
-      src: "/projects/ada-repair-dashboard.png",
-      alt: "Painel administrativo do ADA Repair com indicadores de clientes, ordens de serviço, estoque baixo e aparelhos prontos",
+      src: "/projects/ada-repair-painel.jpg",
+      alt: "Painel do ADA Repair com indicadores de clientes, ordens em andamento, estoque baixo, aparelhos prontos e margem comercial",
     },
+    url: "ada-repair · painel interno",
     gallery: [
-      { src: "/projects/ada-repair-dashboard.png", alt: "Painel administrativo com indicadores da operação" },
-      { src: "/projects/ada-repair-store.png", alt: "Controle de aparelhos à venda na loja" },
-      { src: "/projects/ada-repair-login.png", alt: "Tela de acesso administrativo" },
+      { src: "/projects/ada-repair-ordens.jpg", alt: "Lista de ordens de serviço com aparelho, cliente, problema relatado e status" },
+      { src: "/projects/ada-repair-ordem.jpg", alt: "Detalhe de uma ordem de serviço com controle de status, dados do atendimento e resumo financeiro" },
+      { src: "/projects/ada-repair-estoque.jpg", alt: "Controle de estoque de peças com alerta de estoque baixo e fornecedor" },
     ],
     links: [],
     context: [
@@ -82,7 +84,7 @@ export const projects: Project[] = [
       },
     ],
     privateNote:
-      "O sistema está em uso na loja e, por segurança, não tem acesso público nem código aberto. Mostro aqui apenas telas autorizadas, sem dados reais de clientes.",
+      "O sistema está em uso na loja e, por segurança, não tem acesso público nem código aberto. As telas acima são do sistema real rodando com dados fictícios.",
   },
   {
     slug: "studio-cm",
@@ -100,13 +102,13 @@ export const projects: Project[] = [
       "Testes automatizados das proteções da API",
     ],
     cover: {
-      src: "/projects/studio-cm-booking.png",
-      alt: "Fluxo de agendamento do Studio CM, na etapa de escolha da especialista e do serviço",
+      src: "/projects/studio-cm-inicio.jpg",
+      alt: "Página inicial do Studio CM com o nome do estúdio e as duas profissionais, Carol e Malu",
     },
+    url: "studio-cm.vercel.app",
     gallery: [
-      { src: "/projects/studio-cm-booking.png", alt: "Fluxo de agendamento em quatro etapas" },
-      { src: "/projects/studio-cm-home.png", alt: "Página inicial do Studio CM" },
-      { src: "/projects/studio-cm-cta.png", alt: "Chamada para agendamento e contatos" },
+      { src: "/projects/studio-cm-agendamento.jpg", alt: "Agendamento em quatro etapas, na escolha da profissional" },
+      { src: "/projects/studio-cm-profissional.jpg", alt: "Página da Carol, lash designer, com botão para agendar" },
     ],
     links: [
       { label: "ver no ar", href: "https://studio-cm.vercel.app/" },

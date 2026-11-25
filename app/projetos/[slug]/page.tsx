@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollFx from "@/components/ScrollFx";
-import { Pill, Tag } from "@/components/ui";
+import { Aurora, Button, Frame, Tag } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
 
@@ -37,13 +36,8 @@ export async function generateMetadata({
 
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <section data-reveal className="grid gap-4 border-t border-line py-12 md:grid-cols-[11rem_1fr] md:gap-10">
-      <h2 className="font-mono text-[15px] font-normal text-white">
-        <span className="text-lime" aria-hidden="true">
-          ▍{" "}
-        </span>
-        {label}
-      </h2>
+    <section data-reveal className="grid gap-5 border-t border-line py-14 md:grid-cols-[13rem_1fr] md:gap-12">
+      <h2 className="label pt-1.5">{label}</h2>
       <div className="max-w-[40rem] space-y-4 text-[17px] leading-relaxed text-text">{children}</div>
     </section>
   );
@@ -60,32 +54,33 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
     <>
       <ScrollFx />
       <Header />
-      <main className="wrap pb-20 pt-12 sm:pt-16">
-        <Link href="/#projetos" className="font-mono text-[13px] text-muted transition-colors hover:text-white">
+      <main className="relative isolate">
+        <div className="relative isolate overflow-hidden">
+          <Aurora className="opacity-70" />
+        <div className="wrap pb-4 pt-12 sm:pt-16">
+        <Link href="/#projetos" className="text-[14px] text-muted transition-colors hover:text-aqua">
           ← projetos
         </Link>
 
         <header data-reveal className="mt-10">
-          <p className="font-mono text-[13px] text-muted">
-            estudo de caso · <span className="text-lime">{project.kind}</span>
-          </p>
-          <h1 className="mt-3 font-mono text-[36px] font-normal leading-tight text-white sm:text-[48px]">
+          <p className="label">estudo de caso · {project.kind}</p>
+          <h1 className="display mt-4 text-[52px] sm:text-[80px] lg:text-[96px]">
             {project.name}
           </h1>
-          <p className="mt-4 max-w-[40rem] text-lg leading-relaxed text-text sm:text-xl">{project.summary}</p>
+          <p className="mt-6 max-w-[40rem] text-lg leading-relaxed text-text sm:text-xl">{project.summary}</p>
         </header>
 
-        <dl className="mt-10 grid gap-6 border-y border-line py-6 font-mono text-[13px] sm:grid-cols-3">
+        <dl className="mt-12 grid gap-6 border-y border-line py-7 text-[15px] sm:grid-cols-3">
           <div>
-            <dt className="text-muted">papel</dt>
-            <dd className="mt-1 text-text">{project.role}</dd>
+            <dt className="label">papel</dt>
+            <dd className="mt-2 text-text">{project.role}</dd>
           </div>
           <div>
-            <dt className="text-muted">status</dt>
-            <dd className="mt-1 text-text">{project.status}</dd>
+            <dt className="label">status</dt>
+            <dd className="mt-2 text-text">{project.status}</dd>
           </div>
           <div>
-            <dt className="text-muted">stack</dt>
+            <dt className="label">stack</dt>
             <dd className="mt-2">
               <ul className="flex flex-wrap gap-1.5">
                 {project.stack.map((s) => (
@@ -97,27 +92,23 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         </dl>
 
         {project.links.length > 0 && (
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
             {project.links.map((l, i) => (
-              <Pill key={l.href} href={l.href} tone={i === 0 ? "pink" : "lilac"} external>
+              <Button key={l.href} href={l.href} kind={i === 0 ? "ghost" : "text"} external>
                 {l.label}
-              </Pill>
+              </Button>
             ))}
           </div>
         )}
 
-        <div className="relative mt-12 aspect-[16/9] overflow-hidden rounded-lg border border-line bg-surface">
-          <Image
-            src={project.cover.src}
-            alt={project.cover.alt}
-            fill
-            priority
-            sizes="(max-width: 960px) 100vw, 900px"
-            className="pan-img object-cover object-top"
-          />
+        <div className="mt-14">
+          <Frame src={project.cover.src} alt={project.cover.alt} url={project.url} priority pan={false} sizes="(max-width: 1240px) 100vw, 1120px" />
+        </div>
+        </div>
         </div>
 
-        <div className="mt-12">
+        <div className="wrap pb-20">
+        <div className="mt-16">
           <Block label="contexto">
             {project.context.map((p) => (
               <p key={p}>{p}</p>
@@ -128,7 +119,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <ul className="space-y-3">
               {project.built.map((b) => (
                 <li key={b} className="flex gap-3">
-                  <span aria-hidden="true" className="font-mono text-lime">›</span>
+                  <span aria-hidden="true" className="mt-[11px] h-1 w-3 shrink-0 rounded-full bg-gradient-to-r from-magenta to-aqua" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -139,7 +130,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <div className="space-y-8">
               {project.decisions.map((d) => (
                 <div key={d.title}>
-                  <h3 className="font-mono text-[15px] font-normal text-white">{d.title}</h3>
+                  <h3 className="text-[20px] font-normal tracking-tight text-white">{d.title}</h3>
                   <p className="mt-2">{d.text}</p>
                 </div>
               ))}
@@ -151,7 +142,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
               <ul className="space-y-3">
                 {project.next.map((n) => (
                   <li key={n} className="flex gap-3">
-                    <span aria-hidden="true" className="font-mono text-pink">›</span>
+                    <span aria-hidden="true" className="mt-[11px] h-1 w-3 shrink-0 rounded-full bg-aqua/60" />
                     <span>{n}</span>
                   </li>
                 ))}
@@ -160,13 +151,11 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           )}
 
           <Block label="telas">
-            <div className="space-y-4">
+            <div className="space-y-10">
               {project.gallery.filter((g) => g.src !== project.cover.src).map((g) => (
-                <figure key={g.src}>
-                  <div className="relative aspect-[1850/966] overflow-hidden rounded-lg border border-line bg-surface">
-                    <Image src={g.src} alt={g.alt} fill sizes="(max-width: 960px) 100vw, 640px" className="object-cover object-top" />
-                  </div>
-                  <figcaption className="mt-2 font-mono text-[12px] text-muted">{g.alt}</figcaption>
+                <figure key={g.src} className="tilt-in">
+                  <Frame src={g.src} alt={g.alt} url={project.url} pan={false} sizes="(max-width: 960px) 100vw, 760px" />
+                  <figcaption className="mt-3 text-[14px] text-muted">{g.alt}</figcaption>
                 </figure>
               ))}
               {project.privateNote && <p className="text-[15px] text-muted">{project.privateNote}</p>}
@@ -177,15 +166,18 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         <nav className="mt-4 flex flex-col gap-6 border-t border-line pt-10 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href={`/projetos/${nextProject.slug}`}
-            className="group font-mono text-white"
+            className="group text-white"
           >
-            <span className="block text-[13px] text-muted">próximo projeto</span>
-            <span className="mt-1 block text-xl transition-colors group-hover:text-lime">{nextProject.name} →</span>
+            <span className="label block">próximo projeto</span>
+            <span className="headline mt-2 block text-[34px] transition-colors group-hover:text-aqua sm:text-[44px]">
+              {nextProject.name} →
+            </span>
           </Link>
-          <Pill href={`mailto:${site.email}`} tone="pink">
+          <Button href={`mailto:${site.email}`} kind="primary">
             falar comigo
-          </Pill>
+          </Button>
         </nav>
+        </div>
       </main>
       <Footer />
     </>

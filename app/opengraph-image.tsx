@@ -12,11 +12,15 @@ export default function Image() {
         height: 630,
         display: "flex",
         position: "relative",
-        background: "linear-gradient(180deg, #0b1233 0%, #07061a 70%)",
-        color: "#cdd5e3",
-        fontFamily: "monospace",
+        background: "#04051a",
+        color: "#dde1f0",
+        fontFamily: "sans-serif",
       }}
     >
+      {/* luz da paleta: marinho, magenta e água */}
+      <div style={{ position: "absolute", left: -160, top: -160, width: 760, height: 760, borderRadius: 999, display: "flex", background: "radial-gradient(circle, rgba(74,80,196,0.55), transparent 65%)" }} />
+      <div style={{ position: "absolute", right: 80, top: 40, width: 560, height: 560, borderRadius: 999, display: "flex", background: "radial-gradient(circle, rgba(227,28,121,0.45), transparent 65%)" }} />
+      <div style={{ position: "absolute", right: -140, bottom: -200, width: 620, height: 620, borderRadius: 999, display: "flex", background: "radial-gradient(circle, rgba(163,215,223,0.38), transparent 65%)" }} />
       <div
         style={{
           display: "flex",
@@ -26,25 +30,20 @@ export default function Image() {
           width: "100%",
         }}
       >
-        <div style={{ display: "flex", fontSize: 30, color: "#f6f4fa" }}>
+        <div style={{ display: "flex", fontSize: 30, color: "#f8f8fc", fontFamily: "monospace" }}>
           <span>adame</span>
-          <span style={{ color: "#ff4fa3" }}>.</span>
+          <span style={{ color: "#e31c79" }}>.</span>
           <span>dev</span>
-          <span style={{ color: "#b8ff5a" }}>_</span>
+          <span style={{ color: "#a3d7df" }}>_</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 76, color: "#f6f4fa" }}>Camilly Adame</div>
-          <div style={{ display: "flex", marginTop: 20, fontSize: 30, color: "#cdd5e3" }}>
+          <div style={{ display: "flex", fontSize: 104, letterSpacing: -4, color: "#f8f8fc", lineHeight: 1 }}>Camilly Adame</div>
+          <div style={{ display: "flex", marginTop: 26, fontSize: 32, color: "#dde1f0" }}>
             Desenvolvedora full-stack · Ciência de Dados
           </div>
         </div>
-        <div style={{ display: "flex", gap: 16, fontSize: 22 }}>
-          <span style={{ display: "flex", padding: "10px 22px", borderRadius: 999, background: "rgba(184,255,90,0.14)", color: "#e4ffc2" }}>
-            TypeScript · React · Next.js
-          </span>
-          <span style={{ display: "flex", padding: "10px 22px", borderRadius: 999, background: "rgba(255,79,163,0.16)", color: "#ffe1ef" }}>
-            Node.js · PostgreSQL
-          </span>
+        <div style={{ display: "flex", fontSize: 22, color: "#a3d7df", fontFamily: "monospace" }}>
+          TypeScript · React · Next.js · Node.js · PostgreSQL
         </div>
       </div>
     </div>,
