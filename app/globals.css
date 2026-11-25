@@ -2,36 +2,43 @@
 
 /*
   Adame.dev — tokens
-  Fundo violeta-noturno em degradê, texto névoa, e as duas cores da marca
-  (rosa e verde-lima) usadas como tinta translúcida, nunca como bloco sólido.
+  Paleta da marca: azul-marinho #1A1E5E, magenta #E31C79 e água #A3D7DF.
+  O fundo é um quase-preto azulado; as três cores aparecem como luz
+  (gradientes suaves e partículas), e o magenta é reservado para a ação
+  principal de cada tela.
 */
 :root {
-  --void: #07061a;
-  --void-top: #0b1233;
-  --surface: #10142b;
-  --surface-2: #181d3a;
-  --line: rgb(202 213 226 / 0.12);
-  --line-strong: rgb(202 213 226 / 0.22);
-  --text: #cdd5e3;
-  --muted: #8f98ad;
-  --white: #f6f4fa;
-  --pink: #ff4fa3;
-  --lime: #b8ff5a;
-  --lilac: #b7a6ff;
+  --void: #04051a;
+  --ink: #090b2a;
+  --navy: #1a1e5e;
+  --navy-glow: #4a50c4;
+  --magenta: #e31c79;
+  --magenta-soft: #ff6aa8;
+  --aqua: #a3d7df;
+  --text: #dde1f0;
+  --muted: #959bbd;
+  --white: #f8f8fc;
+  --line: rgb(163 215 223 / 0.12);
+  --line-strong: rgb(163 215 223 / 0.24);
+  --surface: #0c0f33;
+  --surface-2: #141849;
 }
 
 @theme inline {
   --color-void: var(--void);
-  --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-navy-glow: var(--navy-glow);
+  --color-magenta: var(--magenta);
+  --color-magenta-soft: var(--magenta-soft);
+  --color-aqua: var(--aqua);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-white: var(--white);
-  --color-pink: var(--pink);
-  --color-lime: var(--lime);
-  --color-lilac: var(--lilac);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
 
   --font-mono: var(--font-mono);
   --font-sans: var(--font-sans);
@@ -44,34 +51,34 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, var(--void-top) 0, var(--void) 900px) no-repeat,
-    var(--void);
+  background: var(--void);
   color: var(--text);
   font-family: var(--font-sans);
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
 }
 
 ::selection {
-  background: rgb(255 79 163 / 0.35);
+  background: rgb(227 28 121 / 0.4);
   color: var(--white);
 }
 
 :focus-visible {
-  outline: 2px solid var(--lime);
+  outline: 2px solid var(--aqua);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .wrap {
   width: 100%;
-  max-width: 960px;
+  max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
-
 @media (min-width: 768px) {
   .wrap {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
 }
 
@@ -79,11 +86,42 @@ section[id] {
   scroll-margin-top: 4.5rem;
 }
 
-/* links de texto: sem sublinhado até o hover */
+/* títulos grandes e leves: a hierarquia vem do tamanho, não do peso */
+.display {
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  color: var(--white);
+}
+.headline {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+/* texto com o degradê da marca */
+.grad-text {
+  background: linear-gradient(100deg, #8a8ff0 0%, var(--magenta-soft) 45%, var(--aqua) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* rótulo pequeno em mono, sempre em água */
+.label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--aqua);
+}
+
+/* links de texto */
 .link {
-  color: var(--lilac);
+  color: var(--aqua);
   text-decoration: underline;
-  text-decoration-color: transparent;
+  text-decoration-color: rgb(163 215 223 / 0.35);
   text-underline-offset: 4px;
   transition: text-decoration-color 0.2s, color 0.2s;
 }
@@ -92,45 +130,162 @@ section[id] {
   text-decoration-color: currentColor;
 }
 
-/* pílulas translúcidas: cada cor é uma categoria, não uma hierarquia */
-.pill {
+/* botões: um principal (magenta cheio) e um secundário (contorno) */
+.btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   border-radius: 9999px;
-  border: 1px solid rgb(255 255 255 / 0.1);
-  padding: 0.5rem 1.15rem;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.2;
   white-space: nowrap;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+  transition: background-color 0.25s, border-color 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
 }
-.pill:hover {
+.btn:hover {
   transform: translateY(-1px);
-  border-color: rgb(255 255 255 / 0.2);
 }
-.pill-lime {
-  background: rgb(184 255 90 / 0.12);
-  color: #e4ffc2;
+.btn-primary {
+  background: var(--magenta);
+  color: #fff;
+  box-shadow: 0 10px 30px -10px rgb(227 28 121 / 0.7);
 }
-.pill-lime:hover {
-  background: rgb(184 255 90 / 0.2);
+.btn-primary:hover {
+  background: #f0258a;
+  box-shadow: 0 14px 36px -10px rgb(227 28 121 / 0.85);
 }
-.pill-pink {
-  background: rgb(255 79 163 / 0.14);
-  color: #ffe1ef;
+.btn-ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--white);
+  background: rgb(255 255 255 / 0.02);
 }
-.pill-pink:hover {
-  background: rgb(255 79 163 / 0.22);
+.btn-ghost:hover {
+  border-color: var(--aqua);
+  background: rgb(163 215 223 / 0.06);
 }
-.pill-lilac {
-  background: rgb(183 166 255 / 0.13);
-  color: #ebe6ff;
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text);
+  transition: color 0.2s;
 }
-.pill-lilac:hover {
-  background: rgb(183 166 255 / 0.21);
+.text-link:hover {
+  color: var(--aqua);
+}
+
+.tag {
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  background: rgb(26 30 94 / 0.35);
+  padding: 0.2rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgb(221 225 240 / 0.88);
+}
+
+/* linha fina em degradê usada como divisor */
+.hair {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(74 80 196 / 0.6), rgb(227 28 121 / 0.5), rgb(163 215 223 / 0.5), transparent);
+}
+
+/* ---------- luz de fundo: manchas suaves das três cores ---------- */
+.aurora {
+  position: absolute;
+  inset: -20% -10%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: drift 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.aurora .a1 {
+  width: 55vw;
+  height: 55vw;
+  max-width: 760px;
+  max-height: 760px;
+  left: -8%;
+  top: 0%;
+  background: radial-gradient(circle, rgb(26 30 94 / 0.95), transparent 65%);
+}
+.aurora .a2 {
+  width: 40vw;
+  height: 40vw;
+  max-width: 560px;
+  max-height: 560px;
+  right: 10%;
+  top: 18%;
+  background: radial-gradient(circle, rgb(227 28 121 / 0.32), transparent 65%);
+  animation-duration: 26s;
+  animation-delay: -8s;
+}
+.aurora .a3 {
+  width: 38vw;
+  height: 38vw;
+  max-width: 520px;
+  max-height: 520px;
+  right: -6%;
+  bottom: 4%;
+  background: radial-gradient(circle, rgb(163 215 223 / 0.24), transparent 65%);
+  animation-duration: 30s;
+  animation-delay: -14s;
+}
+@keyframes drift {
+  from {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4%, 3%, 0) scale(1.08);
+  }
+}
+
+/* moldura de navegador para as capturas dos projetos */
+.frame {
+  position: relative;
+  border-radius: 18px;
+  padding: 1px;
+  background: linear-gradient(140deg, rgb(74 80 196 / 0.7), rgb(227 28 121 / 0.45) 50%, rgb(163 215 223 / 0.55));
+  box-shadow: 0 40px 90px -40px rgb(227 28 121 / 0.35), 0 30px 80px -50px rgb(163 215 223 / 0.35);
+}
+.frame-inner {
+  overflow: hidden;
+  border-radius: 17px;
+  background: var(--ink);
+}
+.frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--line);
+  background: rgb(9 11 42 / 0.9);
+}
+.frame-bar i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgb(163 215 223 / 0.22);
+}
+.frame-bar b {
+  margin-left: 10px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.05);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
 }
 
 /* ---------- movimento ligado ao scroll (ver components/ScrollFx.tsx) ---------- */
@@ -138,56 +293,18 @@ section[id] {
 /* revelar ao entrar na tela: só esconde depois que o JS marcou <html class="fx"> */
 .fx [data-reveal] {
   opacity: 0;
-  translate: 0 28px;
+  translate: 0 32px;
+  filter: blur(6px);
   transition:
-    opacity 0.8s ease,
-    translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.9s ease,
+    filter 0.9s ease,
+    translate 1s cubic-bezier(0.2, 0.7, 0.2, 1);
   transition-delay: var(--d, 0ms);
 }
 .fx [data-reveal].is-in {
   opacity: 1;
   translate: 0 0;
-}
-
-/* símbolos flutuantes: paralaxe pela rolagem + balanço lento contínuo */
-.glyph {
-  translate: 0 calc(var(--local, 0) * var(--speed, 0) * 1px);
-  rotate: calc(var(--local, 0) * var(--spin, 0) * 1deg);
-  animation: bob 7s ease-in-out infinite alternate;
-  will-change: translate, rotate;
-}
-.glyph:nth-child(2n) {
-  animation-duration: 9s;
-  animation-delay: -3s;
-}
-.glyph:nth-child(3n) {
-  animation-duration: 11s;
-  animation-delay: -6s;
-}
-@keyframes bob {
-  from {
-    transform: translateY(-6px);
-  }
-  to {
-    transform: translateY(8px);
-  }
-}
-
-/* faixa de stack: desliza sozinha e acelera para o lado quando a página rola */
-.ticker {
-  translate: calc(var(--scroll, 0) * -0.35px) 0;
-  animation: marquee 70s linear infinite;
-  will-change: translate, transform;
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-25%);
-  }
-}
-
-/* barra de progresso de leitura no topo */
-.float {
-  animation: bob 6s ease-in-out infinite alternate;
+  filter: none;
 }
 
 .progress-bar {
@@ -202,10 +319,24 @@ section[id] {
   }
   @keyframes pan {
     from {
-      transform: translateY(-3%) scale(1.07);
+      transform: translateY(-2.5%) scale(1.06);
     }
     to {
-      transform: translateY(3%) scale(1.07);
+      transform: translateY(2.5%) scale(1.06);
+    }
+  }
+  /* molduras inclinam de leve e endireitam ao chegar no centro da tela */
+  .tilt-in {
+    animation: tilt linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+  @keyframes tilt {
+    from {
+      transform: perspective(1400px) rotateX(10deg) scale(0.94);
+    }
+    to {
+      transform: perspective(1400px) rotateX(0deg) scale(1);
     }
   }
 }
@@ -287,19 +418,18 @@ section[id] {
   html {
     scroll-behavior: auto;
   }
-  .cursor {
+  .cursor,
+  .aurora span {
     animation: none;
   }
-  .pill:hover {
+  .btn:hover {
     transform: none;
   }
-  .glyph,
-  .float,
   .mascot-breathe,
   .mascot-shadow,
   .mascot-hop,
-  .ticker,
-  .pan-img {
+  .pan-img,
+  .tilt-in {
     animation: none !important;
   }
 }

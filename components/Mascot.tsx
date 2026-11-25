@@ -120,7 +120,7 @@ export default function Mascot() {
     setHop((h) => h + 1);
     setBlink(true);
     setTimeout(() => setBlink(false), 160);
-    const colors = ["text-pink", "text-lime", "text-lilac"];
+    const colors = ["text-magenta-soft", "text-aqua", "text-navy-glow"];
     const batch = Array.from({ length: 4 }, (_, i) => ({
       id: Date.now() + i,
       x: i % 2 ? 68 + Math.random() * 20 : 8 + Math.random() * 20,
@@ -151,7 +151,7 @@ export default function Mascot() {
         onClick={onClick}
         onMouseEnter={() => say()}
         aria-label="Avatar ilustrado da Camilly. Clique para ela dizer algo."
-        className="group relative block h-64 w-full cursor-pointer overflow-hidden rounded-lg border border-line bg-gradient-to-b from-surface-2 to-surface md:h-72"
+        className="group relative block h-64 w-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-[radial-gradient(120%_90%_at_50%_100%,rgb(227_28_121/0.22),transparent_60%),linear-gradient(180deg,var(--surface-2),var(--ink))] md:h-72"
       >
         {/* sombra no chão */}
         <span aria-hidden="true" className="mascot-shadow absolute bottom-2 left-1/2 h-3 w-24 -translate-x-1/2 rounded-[50%] bg-black/40 blur-[3px]" />
