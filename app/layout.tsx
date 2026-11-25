@@ -1,99 +1,76 @@
-import type { Metadata } from "next";
-import { Sora, Inter, Space_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono, DM_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { site } from "@/data/site";
+import "./globals.css";
 
-const display = Sora({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const mono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adamedev.com.br";
+const sans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const title = "Camilly Adame — Desenvolvedora full-stack";
+const description =
+  "Portfólio da Camilly Adame, desenvolvedora full-stack e estudante de Ciência de Dados. Sistemas web com TypeScript, React, Next.js, Node.js e PostgreSQL.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(site.url),
   title: {
-    default: "Adame.dev — Soluções digitais para negócios reais",
-    template: "%s | Adame.dev",
+    default: title,
+    template: "%s · Camilly Adame",
   },
-  description:
-    "Sites, sistemas e automações pensados para o seu negócio funcionar melhor. Projetos online para todo o Brasil, com base em Presidente Epitácio — SP.",
+  description,
   keywords: [
-    "desenvolvimento de sites",
-    "automação",
-    "sistemas personalizados",
-    "Presidente Epitácio",
-    "Adame.dev",
-    "desenvolvedora",
+    "Camilly Adame",
+    "desenvolvedora full-stack",
+    "portfólio",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "PostgreSQL",
+    "Ciência de Dados",
   ],
-  authors: [{ name: "Camilly Adame" }],
-  creator: "Camilly Adame",
-  publisher: "Adame.dev",
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
   openGraph: {
-    title: "Adame.dev — Transformando problemas reais em soluções digitais",
-    description:
-      "Sites, sistemas e automações pensados para o seu negócio funcionar melhor.",
-    url: siteUrl,
-    type: "website",
+    title,
+    description,
+    url: site.url,
+    type: "profile",
     locale: "pt_BR",
-    siteName: "Adame.dev",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Adame.dev — Transformando problemas reais em soluções digitais",
-      },
-    ],
+    siteName: "adame.dev",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adame.dev — Soluções digitais para negócios reais",
-    description:
-      "Sites, sistemas e automações pensados para o seu negócio funcionar melhor.",
-    images: ["/opengraph-image"],
+    title,
+    description,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
+  robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#07061a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${display.variable} ${sans.variable} ${mono.variable} antialiased`}
-      >
+    <html lang="pt-BR" className={`${mono.variable} ${sans.variable}`}>
+      <body>
         {children}
-        <body>
-  {children}
-  <Analytics />
-</body>
+        <Analytics />
       </body>
     </html>
   );

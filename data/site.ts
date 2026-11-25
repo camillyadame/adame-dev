@@ -1,8 +1,21 @@
-export const siteConfig = {
-  instagram: "https://instagram.com/adame.dev",
-  whatsapp: "https://wa.me/5518998039626?text=Oi%2C%20Camilly!%20Conheci%20a%20Adame.dev%20pelo%20site%20e%20tenho%20um%20problema%20para%20resolver.",
+export const site = {
+  name: "Camilly Adame",
+  handle: "adame.dev",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://adamedev.com.br",
+  role: "Desenvolvedora full-stack",
   email: "cadame.dev@gmail.com",
+  linkedin: "https://www.linkedin.com/in/camilly-adame",
   github: "https://github.com/camillyadame",
-  studioCm: "https://studio-cm.vercel.app/",
+  repo: "https://github.com/camillyadame/adame-dev",
   location: "Presidente Epitácio — SP",
 };
+
+export type StackGroup = { label: string; items: string[] };
+
+export const stack: StackGroup[] = [
+  { label: "frontend", items: ["TypeScript", "React", "Next.js", "Tailwind CSS"] },
+  { label: "backend", items: ["Node.js", "Express", "NextAuth", "APIs REST"] },
+  { label: "dados", items: ["PostgreSQL", "Prisma", "Python"] },
+  { label: "integrações", items: ["Google Calendar API", "Cloudinary"] },
+  { label: "ferramentas", items: ["Git", "Linux", "Vercel", "Vite"] },
+];
