@@ -1,41 +1,19 @@
-import { siteConfig } from "@/data/site";
-import BrandLogo from "./BrandLogo";
+import { site } from "@/data/site";
+import { Logo } from "./ui";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
-  const links = [
-    { href: siteConfig.instagram, label: "Instagram" },
-    { href: siteConfig.github, label: "GitHub" },
-    { href: `mailto:${siteConfig.email}`, label: "E-mail" },
-  ];
-
   return (
-    <footer className="bg-graphite py-10 text-offwhite">
-      <div className="container-page flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
-        <div>
-          <BrandLogo tone="light" className="text-lg" />
-          <p className="mt-1.5 font-mono text-xs uppercase tracking-widest text-offwhite/45">
-            Creative Technology Studio
-          </p>
+    <footer className="border-t border-line py-10">
+      <div className="wrap flex flex-col gap-4 font-mono text-[13px] text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <Logo short />
+          <span>© {new Date().getFullYear()} {site.name}</span>
         </div>
-
-        <nav aria-label="Links do rodapé" className="flex gap-6">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-offwhite/60 hover:text-offwhite"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <p className="font-mono text-xs text-offwhite/40">
-          © {year} Adame.dev — Creative Technology Studio
+        <p>
+          feito com Next.js e Tailwind ·{" "}
+          <a href={site.repo} target="_blank" rel="noreferrer" className="link">
+            ver o código
+          </a>
         </p>
       </div>
     </footer>

@@ -1,59 +1,46 @@
-# Adame.dev
+# adame.dev
 
-> Transformando problemas reais em soluções digitais.
+Portfólio da **Camilly Adame**, desenvolvedora full-stack e estudante de Ciência de Dados.
 
-Portfólio e presença digital da **Adame.dev**, estúdio de tecnologia criado por Camilly Adame para desenvolver soluções digitais pensadas a partir de problemas reais de pequenos negócios e profissionais.
-
-## Sobre o projeto
-
-A Adame.dev não parte da ferramenta. O processo começa entendendo a rotina, o problema e o que precisa funcionar melhor para então definir a solução mais adequada.
-
-O site apresenta serviços, processo de trabalho, projetos reais e cases de desenvolvimento, além de centralizar os canais de contato do estúdio.
-
-### Soluções
-
-- Sites e landing pages
-- Automações e integrações
-- Sistemas personalizados
-- Soluções combinando presença digital e processos internos
-
-## Projetos em destaque
-
-### Studio CM
-Site para um estúdio de beleza com duas profissionais, serviços e agendas diferentes. A solução organiza a apresentação dos serviços e integra o fluxo de agendamento ao Google Calendar.
-
-### ADA Repair
-Sistema interno para gestão de assistência técnica, incluindo clientes, aparelhos, ordens de serviço, estoque, fornecedores e outros fluxos operacionais. Por ser um sistema privado, é apresentado publicamente apenas como case.
-
-### SEIVA
-Produto digital autoral de estudos com IA e gamificação, atualmente em desenvolvimento.
+🌐 [adamedev.com.br](https://adamedev.com.br) · [LinkedIn](https://www.linkedin.com/in/camilly-adame) · [GitHub](https://github.com/camillyadame)
 
 ## Stack
 
-`Next.js` · `React` · `TypeScript` · `Tailwind CSS` · `Vercel`
+`Next.js 16` (App Router, páginas estáticas) · `React 19` · `TypeScript` · `Tailwind CSS 4` · `Vercel Analytics`
 
-## Identidade
+## Estrutura
 
-```text
-problema real
-    ↓
-entender
-    ↓
-planejar
-    ↓
-construir
-    ↓
-solução digital_
+```
+app/
+  page.tsx                 home: abertura, projetos, sobre, stack, contato
+  projetos/[slug]/page.tsx estudos de caso, gerados a partir de data/projects.ts
+  opengraph-image.tsx      imagem de compartilhamento gerada no build
+components/
+  AsciiField.tsx           campo de caracteres animado em <canvas> do hero
+  Header.tsx, Footer.tsx, ui.tsx
+data/
+  projects.ts              conteúdo dos projetos e estudos de caso
+  site.ts                  links, contato e stack
 ```
 
-A identidade da Adame.dev combina uma base gráfica escura e minimalista com linguagem de produto digital e pequenos acentos inspirados em interfaces e código — tecnologia com personalidade, sem perder clareza profissional.
+O conteúdo fica em `data/`: para adicionar um projeto, basta incluir um item em `projects.ts` e a página do estudo de caso, o sitemap e a home são atualizados.
 
-## Acesse
+### Hero
 
-**Site:** https://adamedev.com.br  
-**Instagram:** https://instagram.com/adame.dev  
-**Contato:** adame.dev@gmail.com
+O fundo do hero é um campo de ondas (soma de senos com uma ondulação radial) desenhado como texto em um `<canvas>`. Ele roda a 24 fps, pausa quando sai da tela, reage ao ponteiro e desenha um único quadro estático quando o sistema pede movimento reduzido.
 
----
+## Rodando localmente
 
-`adame.dev_` — tecnologia com propósito, não só presença online.
+```bash
+npm install
+npm run dev
+```
+
+## Currículo
+
+A página `/curriculo` lê os mesmos dados de `data/site.ts` e `data/projects.ts` e tem uma versão de impressão em fundo branco. Depois de mudar o conteúdo, gere o PDF de novo com o site rodando:
+
+```bash
+npm run build && npm start
+npm run cv:pdf   # grava public/camilly-adame-curriculo.pdf
+```

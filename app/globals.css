@@ -1,200 +1,352 @@
 @import "tailwindcss";
 
+/*
+  Adame.dev — tokens
+  Fundo violeta-noturno em degradê, texto névoa, e as duas cores da marca
+  (rosa e verde-lima) usadas como tinta translúcida, nunca como bloco sólido.
+*/
 :root {
-  --graphite: #101014;
-  --offwhite: #f7f3ef;
+  --void: #07061a;
+  --void-top: #0b1233;
+  --surface: #10142b;
+  --surface-2: #181d3a;
+  --line: rgb(202 213 226 / 0.12);
+  --line-strong: rgb(202 213 226 / 0.22);
+  --text: #cdd5e3;
+  --muted: #8f98ad;
+  --white: #f6f4fa;
   --pink: #ff4fa3;
   --lime: #b8ff5a;
+  --lilac: #b7a6ff;
 }
 
 @theme inline {
-  --color-graphite: var(--graphite);
-  --color-offwhite: var(--offwhite);
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-white: var(--white);
   --color-pink: var(--pink);
   --color-lime: var(--lime);
+  --color-lilac: var(--lilac);
 
-  --font-display: var(--font-display);
-  --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--void);
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--void-top) 0, var(--void) 900px) no-repeat,
+    var(--void);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgb(255 79 163 / 0.35);
+  color: var(--white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* links de texto: sem sublinhado até o hover */
+.link {
+  color: var(--lilac);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s, color 0.2s;
+}
+.link:hover {
+  color: var(--white);
+  text-decoration-color: currentColor;
+}
+
+/* pílulas translúcidas: cada cor é uma categoria, não uma hierarquia */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  padding: 0.5rem 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+.pill:hover {
+  transform: translateY(-1px);
+  border-color: rgb(255 255 255 / 0.2);
+}
+.pill-lime {
+  background: rgb(184 255 90 / 0.12);
+  color: #e4ffc2;
+}
+.pill-lime:hover {
+  background: rgb(184 255 90 / 0.2);
+}
+.pill-pink {
+  background: rgb(255 79 163 / 0.14);
+  color: #ffe1ef;
+}
+.pill-pink:hover {
+  background: rgb(255 79 163 / 0.22);
+}
+.pill-lilac {
+  background: rgb(183 166 255 / 0.13);
+  color: #ebe6ff;
+}
+.pill-lilac:hover {
+  background: rgb(183 166 255 / 0.21);
+}
+
+/* ---------- movimento ligado ao scroll (ver components/ScrollFx.tsx) ---------- */
+
+/* revelar ao entrar na tela: só esconde depois que o JS marcou <html class="fx"> */
+.fx [data-reveal] {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 0.8s ease,
+    translate 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+.fx [data-reveal].is-in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* símbolos flutuantes: paralaxe pela rolagem + balanço lento contínuo */
+.glyph {
+  translate: 0 calc(var(--local, 0) * var(--speed, 0) * 1px);
+  rotate: calc(var(--local, 0) * var(--spin, 0) * 1deg);
+  animation: bob 7s ease-in-out infinite alternate;
+  will-change: translate, rotate;
+}
+.glyph:nth-child(2n) {
+  animation-duration: 9s;
+  animation-delay: -3s;
+}
+.glyph:nth-child(3n) {
+  animation-duration: 11s;
+  animation-delay: -6s;
+}
+@keyframes bob {
+  from {
+    transform: translateY(-6px);
+  }
+  to {
+    transform: translateY(8px);
+  }
+}
+
+/* faixa de stack: desliza sozinha e acelera para o lado quando a página rola */
+.ticker {
+  translate: calc(var(--scroll, 0) * -0.35px) 0;
+  animation: marquee 70s linear infinite;
+  will-change: translate, transform;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+/* barra de progresso de leitura no topo */
+.float {
+  animation: bob 6s ease-in-out infinite alternate;
+}
+
+.progress-bar {
+  transform: scaleX(var(--progress, 0));
+}
+
+/* imagens dos projetos deslizam de leve dentro da moldura (onde o navegador suporta) */
+@supports (animation-timeline: view()) {
+  .pan-img {
+    animation: pan linear both;
+    animation-timeline: view();
+  }
+  @keyframes pan {
+    from {
+      transform: translateY(-3%) scale(1.07);
+    }
+    to {
+      transform: translateY(3%) scale(1.07);
+    }
+  }
+}
+
+/* ---------- mascote (components/Mascot.tsx) ---------- */
+.mascot-breathe {
+  animation: breathe 3.6s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.012, 1.022);
+  }
+}
+.mascot-hop {
+  animation: hop 0.6s cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+@keyframes hop {
+  0% {
+    transform: translateY(0) scale(1, 1);
+  }
+  15% {
+    transform: translateY(0) scale(1.05, 0.94);
+  }
+  45% {
+    transform: translateY(-18px) scale(0.97, 1.04);
+  }
+  75% {
+    transform: translateY(0) scale(1.03, 0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+.mascot-shadow {
+  animation: shadow 3.6s ease-in-out infinite;
+}
+@keyframes shadow {
+  50% {
+    transform: translateX(-50%) scaleX(1.06);
+  }
+}
+.mascot-heart {
+  animation: heart-up 1.3s ease-out forwards;
+}
+@keyframes heart-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-90px) scale(1.2) rotate(12deg);
+  }
+}
+
+/* cursor da assinatura a._ */
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.cursor {
+  animation: blink 1.1s steps(1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-body {
-  background: var(--offwhite);
-  color: var(--graphite);
-  font-family: var(--font-sans);
-}
-
-::selection {
-  background: var(--pink);
-  color: var(--offwhite);
-}
-
-/* visible focus ring, brand-consistent */
-:focus-visible {
-  outline: 2px solid var(--pink);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* signature blinking cursor, used as the brand's underline/cursor motif */
-@keyframes blink {
-  0%,
-  45% {
-    opacity: 1;
-  }
-  50%,
-  95% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.brand-cursor {
-  animation: blink 1.1s steps(1) infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .brand-cursor {
-    animation: none;
-    opacity: 1;
-  }
-}
-
-.container-page {
-  width: 100%;
-  max-width: 1180px;
-  margin-inline: auto;
-  padding-inline: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .container-page {
-    padding-inline: 2.5rem;
-  }
-}
-
-/* textura de pontos discreta, referência direta ao wireframe da marca */
-.dot-grid {
-  background-image: radial-gradient(currentColor 1px, transparent 1px);
-  background-size: 16px 16px;
-}
-
-/* pequenas marcas de canto, dão sensação de "prancheta"/print editorial
-   sem virar estética de terminal */
-.corner-ticks {
-  position: relative;
-}
-.corner-ticks::before,
-.corner-ticks::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-color: currentColor;
-  opacity: 0.4;
-}
-.corner-ticks::before {
-  top: -1px;
-  left: -1px;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-.corner-ticks::after {
-  bottom: -1px;
-  right: -1px;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-}
-
-/* sublinhado que "digita" da esquerda pra direita no hover — reforça o
-   motivo cursor/assinatura nos CTAs de texto */
-.underline-draw {
-  position: relative;
-  text-decoration: none;
-}
-.underline-draw::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 1.5px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-.underline-draw:hover::after,
-.underline-draw:focus-visible::after {
-  transform: scaleX(1);
-}
-
-/* pulso discreto usado em indicadores de status ("disponível_") */
-@keyframes pulse-dot {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-.status-dot {
-  animation: pulse-dot 2.2s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .status-dot {
+  .cursor {
     animation: none;
   }
-}
-
-/* Garante que âncoras não fiquem escondidas atrás do header sticky. */
-section[id] {
-  scroll-margin-top: 5.5rem;
-}
-
-/* FAQ nativo: interação funciona mesmo sem hidratação JS. */
-details > summary {
-  -webkit-tap-highlight-color: transparent;
-}
-
-details[open] .faq-answer {
-  animation: faq-reveal 180ms ease-out;
-}
-
-@keyframes faq-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
+  .pill:hover {
+    transform: none;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .glyph,
+  .float,
+  .mascot-breathe,
+  .mascot-shadow,
+  .mascot-hop,
+  .ticker,
+  .pan-img {
+    animation: none !important;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  details[open] .faq-answer {
-    animation: none;
+/* Currículo: versão impressa / PDF em fundo branco */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 0;
+  }
+  :root {
+    color-scheme: light;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+  .cv {
+    max-width: none !important;
+    padding: 0 15mm !important;
+    font-size: 9.5pt;
+  }
+  .cv-section {
+    grid-template-columns: 6.5rem 1fr !important;
+    gap: 1rem !important;
+    padding-block: 0.6rem !important;
+  }
+  .cv-section > div {
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+  }
+  .cv-section > div > * + * {
+    margin-top: 0.55rem !important;
+  }
+  .cv-section ul li + li {
+    margin-top: 0 !important;
+  }
+  .cv .link {
+    color: #111;
+    text-decoration-color: #bbb;
+  }
+  .cv-section {
+    border-color: #ddd;
+    break-inside: auto;
+  }
+  .cv-item {
+    break-inside: avoid;
   }
 }

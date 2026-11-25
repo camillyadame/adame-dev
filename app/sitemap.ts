@@ -1,16 +1,12 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://adamedev.com.br";
+import { projects } from "@/data/projects";
+import { site } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/projetos/studio-cm",
-    "/projetos/ada-repair",
-  ];
+  const routes = ["", "/curriculo", ...projects.map((p) => `/projetos/${p.slug}`)];
 
   return routes.map((route) => ({
-    url: `${siteUrl}${route}`,
+    url: `${site.url}${route}`,
     lastModified: new Date(),
     changeFrequency: route === "" ? "weekly" : "monthly",
     priority: route === "" ? 1 : 0.8,
