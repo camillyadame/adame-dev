@@ -38,7 +38,7 @@ npm run dev
 
 ## Currículo
 
-A página `/curriculo` lê os mesmos dados de `data/site.ts` e `data/projects.ts` e tem uma versão de impressão em fundo branco. Depois de mudar o conteúdo, gere o PDF de novo com o site rodando:
+O conteúdo do currículo fica em `components/CvSheet.tsx` e o visual em `app/curriculo/cv.css`. Depois de mudar, gere o PDF de novo com o site rodando:
 
 ```bash
 npm run build && npm start
