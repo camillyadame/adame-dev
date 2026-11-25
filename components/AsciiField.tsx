@@ -50,12 +50,14 @@ export default function AsciiField({ className = "" }: { className?: string }) {
     };
 
     const draw = (time: number) => {
-      const t = (time - start) / 1000;
+      // a rolagem acelera as ondas e faz a massa subir mais rápido que o texto
+      const sy = reduce ? 0 : Math.min(window.scrollY, h * 1.5);
+      const t = (time - start) / 1000 + sy * 0.004;
       ctx.clearRect(0, 0, w, h);
 
       const wide = w >= 768;
-      const cx = wide ? w * 0.7 : w * 0.5;
-      const cy = wide ? h * 0.5 : h * 0.19;
+      const cx = (wide ? w * 0.7 : w * 0.5) - (wide ? sy * 0.12 : 0);
+      const cy = (wide ? h * 0.5 : h * 0.19) - sy * 0.35;
       const rx = wide ? w * 0.36 : w * 0.62;
       const ry = wide ? h * 0.46 : h * 0.18;
 
@@ -68,7 +70,7 @@ export default function AsciiField({ className = "" }: { className?: string }) {
         for (let i = 0; i < cols; i++) {
           const x = i * CELL_W;
           const nx = (x - cx) / rx;
-          const d = nx * nx + ny * ny;
+          const d = (nx * nx + ny * ny) * (1 - Math.min(sy / h, 1) * 0.25);
           if (d > 1.15) continue;
           const mask = Math.max(0, 1 - d) ** 0.8;
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AsciiField from "@/components/AsciiField";
+import ScrollFx from "@/components/ScrollFx";
+import { Glyphs, Ticker } from "@/components/Decor";
 import { Pill, SectionTitle, Tag } from "@/components/ui";
 import { projects, inProgress, type Project } from "@/data/projects";
 import { site, stack } from "@/data/site";
@@ -10,9 +12,11 @@ import { site, stack } from "@/data/site";
 export default function Home() {
   return (
     <>
+      <ScrollFx />
       <Header />
       <main>
         <Hero />
+        <Ticker items={stack.flatMap((g) => g.items)} />
         <Projects />
         <About />
         <Stack />
@@ -32,21 +36,21 @@ function Hero() {
         className="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-[#07061a]"
       />
       <div className="wrap flex min-h-[calc(80svh-3.5rem)] flex-col justify-end pb-16 pt-40 sm:justify-center sm:pb-20 sm:pt-24">
-        <p className="font-mono text-[13px] text-muted">
+        <p data-reveal className="font-mono text-[13px] text-muted">
           <span className="text-lime">~</span>/camilly-adame
         </p>
-        <h1 className="mt-4 font-mono text-[40px] font-normal leading-[1.1] tracking-tight text-white sm:text-[56px]">
+        <h1 data-reveal style={{ "--d": "90ms" } as React.CSSProperties} className="mt-4 font-mono text-[40px] font-normal leading-[1.1] tracking-tight text-white sm:text-[56px]">
           Camilly Adame
         </h1>
-        <p className="mt-4 max-w-[34rem] text-lg leading-relaxed text-text sm:text-xl">
+        <p data-reveal style={{ "--d": "180ms" } as React.CSSProperties} className="mt-4 max-w-[34rem] text-lg leading-relaxed text-text sm:text-xl">
           Desenvolvedora full-stack e estudante de Ciência de Dados. Construo
           sistemas web de ponta a ponta, do banco de dados à interface.
         </p>
-        <p className="mt-6 flex items-center gap-2.5 font-mono text-[13px] text-muted">
+        <p data-reveal style={{ "--d": "270ms" } as React.CSSProperties} className="mt-6 flex items-center gap-2.5 font-mono text-[13px] text-muted">
           <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_12px_rgba(184,255,90,0.7)]" aria-hidden="true" />
           aberta a oportunidades · {site.location}
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div data-reveal style={{ "--d": "360ms" } as React.CSSProperties} className="mt-8 flex flex-wrap gap-3">
           <Pill href="/#projetos" tone="lime">
             ver projetos ↓
           </Pill>
@@ -64,7 +68,16 @@ function Hero() {
 
 function Projects() {
   return (
-    <section id="projetos" className="py-20 sm:py-24">
+    <section id="projetos" className="relative isolate py-20 sm:py-24">
+      <Glyphs
+        items={[
+          { c: "{ }", top: "6%", right: "6%", speed: -0.12, spin: 0.02, tone: "lilac", size: 22 },
+          { c: "+", top: "22%", left: "4%", speed: -0.3, spin: 0.15, tone: "lime", size: 20, mobile: true },
+          { c: "</>", top: "44%", right: "3%", speed: -0.2, tone: "pink", size: 18 },
+          { c: "*", top: "63%", left: "5%", speed: -0.08, spin: -0.1, tone: "mist", size: 26 },
+          { c: "a._", top: "82%", right: "8%", speed: -0.25, tone: "mist", size: 16, mobile: true },
+        ]}
+      />
       <div className="wrap">
         <SectionTitle note={`${projects.length} projetos em uso real`}>projetos</SectionTitle>
         <div className="space-y-20 sm:space-y-24">
@@ -73,7 +86,7 @@ function Projects() {
           ))}
         </div>
 
-        <div className="mt-20 rounded-lg border border-dashed border-line-strong p-6 sm:p-8">
+        <div data-reveal className="mt-20 rounded-lg border border-dashed border-line-strong p-6 sm:p-8">
           <p className="font-mono text-[13px] text-pink">{inProgress.kind}</p>
           <h3 className="mt-2 font-mono text-xl text-white">{inProgress.name}</h3>
           <p className="mt-3 max-w-2xl leading-relaxed text-text/90">{inProgress.summary}</p>
@@ -85,7 +98,7 @@ function Projects() {
 
 function ProjectBlock({ project, index }: { project: Project; index: number }) {
   return (
-    <article>
+    <article data-reveal>
       <Link
         href={`/projetos/${project.slug}`}
         className="group block overflow-hidden rounded-lg border border-line bg-surface"
@@ -97,7 +110,7 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             alt={project.cover.alt}
             fill
             sizes="(max-width: 960px) 100vw, 900px"
-            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.01]"
+            className="pan-img object-cover object-top"
           />
         </div>
       </Link>
@@ -156,11 +169,18 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
 
 function About() {
   return (
-    <section id="sobre" className="border-t border-line py-20 sm:py-24">
+    <section id="sobre" className="relative isolate border-t border-line py-20 sm:py-24">
+      <Glyphs
+        items={[
+          { c: "♡", top: "14%", right: "7%", speed: -0.18, spin: 0.05, tone: "pink", size: 22, mobile: true },
+          { c: "~/", top: "70%", left: "3%", speed: -0.25, tone: "lilac", size: 18 },
+          { c: "·  ·  ·", top: "88%", right: "12%", speed: -0.1, tone: "mist", size: 18 },
+        ]}
+      />
       <div className="wrap">
         <SectionTitle tone="pink">sobre</SectionTitle>
         <div className="grid gap-10 md:grid-cols-[13rem_1fr] md:gap-14">
-          <div className="relative mx-auto h-64 w-48 overflow-hidden rounded-lg border border-line bg-gradient-to-b from-surface-2 to-surface md:mx-0 md:h-72 md:w-52">
+          <div data-reveal className="float relative mx-auto h-64 w-48 overflow-hidden rounded-lg border border-line bg-gradient-to-b from-surface-2 to-surface md:mx-0 md:h-72 md:w-52">
             <Image
               src="/brand/mascot-transparent.png"
               alt="Avatar ilustrado da Camilly"
@@ -169,7 +189,7 @@ function About() {
               className="object-contain object-bottom pt-4"
             />
           </div>
-          <div className="max-w-[38rem] space-y-5 text-[17px] leading-relaxed text-text">
+          <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="max-w-[38rem] space-y-5 text-[17px] leading-relaxed text-text">
             <p>
               Sou a Camilly, desenvolvedora e estudante de Ciência de Dados. Meus
               primeiros projetos foram para negócios reais: um sistema de gestão
@@ -200,14 +220,24 @@ function About() {
 
 function Stack() {
   return (
-    <section id="stack" className="border-t border-line py-20 sm:py-24">
+    <section id="stack" className="relative isolate border-t border-line py-20 sm:py-24">
+      <Glyphs
+        items={[
+          { c: "[ ]", top: "10%", left: "5%", speed: -0.22, spin: -0.03, tone: "lime", size: 20 },
+          { c: "=>", top: "55%", right: "4%", speed: -0.3, tone: "lilac", size: 20, mobile: true },
+        ]}
+      />
       <div className="wrap">
         <SectionTitle tone="lilac" note="o que usei nos projetos acima">
           stack
         </SectionTitle>
         <dl className="divide-y divide-line border-y border-line">
-          {stack.map((g) => (
-            <div key={g.label} className="grid gap-3 py-5 sm:grid-cols-[10rem_1fr] sm:items-center">
+          {stack.map((g, i) => (
+            <div
+              key={g.label}
+              data-reveal
+              style={{ "--d": `${i * 70}ms` } as React.CSSProperties}
+              className="grid gap-3 py-5 sm:grid-cols-[10rem_1fr] sm:items-center">
               <dt className="font-mono text-[13px] text-muted">{g.label}</dt>
               <dd>
                 <ul className="flex flex-wrap gap-2">
@@ -226,8 +256,15 @@ function Stack() {
 
 function Contact() {
   return (
-    <section id="contato" className="border-t border-line py-20 sm:py-28">
-      <div className="wrap">
+    <section id="contato" className="relative isolate overflow-hidden border-t border-line py-20 sm:py-28">
+      <Glyphs
+        items={[
+          { c: "a._", top: "18%", right: "8%", speed: -0.2, tone: "lime", size: 64, mobile: true },
+          { c: "@", top: "62%", right: "26%", speed: -0.35, spin: 0.08, tone: "pink", size: 26 },
+          { c: "+", top: "80%", left: "46%", speed: -0.15, spin: 0.2, tone: "mist", size: 22 },
+        ]}
+      />
+      <div className="wrap" data-reveal>
         <SectionTitle>contato</SectionTitle>
         <p className="max-w-[36rem] text-[17px] leading-relaxed text-text">
           Estou aberta a vagas como desenvolvedora. Se você está contratando ou

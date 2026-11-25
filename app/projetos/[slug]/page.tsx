@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollFx from "@/components/ScrollFx";
 import { Pill, Tag } from "@/components/ui";
 import { projects } from "@/data/projects";
 import { site } from "@/data/site";
@@ -36,7 +37,7 @@ export async function generateMetadata({
 
 function Block({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <section className="grid gap-4 border-t border-line py-12 md:grid-cols-[11rem_1fr] md:gap-10">
+    <section data-reveal className="grid gap-4 border-t border-line py-12 md:grid-cols-[11rem_1fr] md:gap-10">
       <h2 className="font-mono text-[15px] font-normal text-white">
         <span className="text-lime" aria-hidden="true">
           ▍{" "}
@@ -57,13 +58,14 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
 
   return (
     <>
+      <ScrollFx />
       <Header />
       <main className="wrap pb-20 pt-12 sm:pt-16">
         <Link href="/#projetos" className="font-mono text-[13px] text-muted transition-colors hover:text-white">
           ← projetos
         </Link>
 
-        <header className="mt-10">
+        <header data-reveal className="mt-10">
           <p className="font-mono text-[13px] text-muted">
             estudo de caso · <span className="text-lime">{project.kind}</span>
           </p>
@@ -111,7 +113,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             fill
             priority
             sizes="(max-width: 960px) 100vw, 900px"
-            className="object-cover object-top"
+            className="pan-img object-cover object-top"
           />
         </div>
 

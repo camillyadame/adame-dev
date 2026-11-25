@@ -61,7 +61,7 @@ export function SectionTitle({
   note?: ReactNode;
 }) {
   return (
-    <div className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+    <div data-reveal className="mb-10 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
       <h2 className="flex items-baseline gap-3 font-mono text-[26px] font-normal leading-tight text-white sm:text-[30px]">
         <span aria-hidden="true" className={`text-base ${glyphs[tone]}`}>
           ▍
