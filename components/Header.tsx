@@ -4,8 +4,8 @@ import { Logo } from "./ui";
 const links = [
   { href: "/#projetos", label: "projetos" },
   { href: "/#sobre", label: "sobre" },
-  { href: "/#stack", label: "stack", hideOnSmall: true },
-  { href: "/#contato", label: "contato" },
+  { href: "/curriculo", label: "currículo" },
+  { href: "/#contato", label: "contato", hideOnSmall: true },
 ];
 
 export default function Header() {

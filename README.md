@@ -35,3 +35,12 @@ O fundo do hero é um campo de ondas (soma de senos com uma ondulação radial) 
 npm install
 npm run dev
 ```
+
+## Currículo
+
+A página `/curriculo` lê os mesmos dados de `data/site.ts` e `data/projects.ts` e tem uma versão de impressão em fundo branco. Depois de mudar o conteúdo, gere o PDF de novo com o site rodando:
+
+```bash
+npm run build && npm start
+npm run cv:pdf   # grava public/camilly-adame-curriculo.pdf
+```

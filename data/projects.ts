@@ -27,9 +27,10 @@ export const projects: Project[] = [
     summary:
       "Sistema interno para uma assistência técnica de celulares: clientes, aparelhos, ordens de serviço, orçamentos, estoque, fornecedores e aparelhos à venda em um só lugar.",
     role: "Desenvolvimento full-stack, do modelo de dados ao deploy",
-    status: "Em uso interno · código privado",
+    status: "Em uso na loja · acesso restrito por segurança",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "NextAuth", "Cloudinary"],
     highlights: [
+      "Substituiu os registros em papel da loja por um sistema central com acesso remoto",
       "Banco relacional com 12 entidades modelado em Prisma",
       "Ordem de serviço com 8 estados, da avaliação à entrega",
       "Perfis de acesso (admin e técnico) checados no servidor",
@@ -48,6 +49,7 @@ export const projects: Project[] = [
     context: [
       "A assistência controlava clientes, aparelhos em conserto, peças e vendas em lugares diferentes. Saber em que pé estava um reparo, ou se uma peça tinha acabado, dependia de procurar em várias fontes.",
       "O objetivo era um sistema único, usado no balcão e pela equipe técnica, que também desse ao cliente um jeito simples de acompanhar o próprio aparelho.",
+      "Hoje o ADA Repair está em uso na loja: os registros em papel foram substituídos por um sistema central, acessível de qualquer lugar, e outra integrante da equipe passou a abrir ordens de serviço sozinha.",
     ],
     built: [
       "Cadastro de clientes e aparelhos, com histórico de ordens por cliente.",
@@ -80,7 +82,7 @@ export const projects: Project[] = [
       },
     ],
     privateNote:
-      "Projeto privado. Mostro apenas telas autorizadas, sem dados reais de clientes.",
+      "O sistema está em uso na loja e, por segurança, não tem acesso público nem código aberto. Mostro aqui apenas telas autorizadas, sem dados reais de clientes.",
   },
   {
     slug: "studio-cm",
@@ -89,7 +91,7 @@ export const projects: Project[] = [
     summary:
       "Site de um estúdio de beleza com agendamento online integrado ao Google Calendar das duas profissionais, cada uma com serviços, durações e horários próprios.",
     role: "Desenvolvimento full-stack: interface, API e integração",
-    status: "Em produção",
+    status: "Em uso pelo estúdio · no ar",
     stack: ["React", "TypeScript", "Vite", "Node.js", "Express", "Google Calendar API"],
     highlights: [
       "Disponibilidade calculada em tempo real a partir das agendas",
@@ -146,9 +148,19 @@ export const projects: Project[] = [
   },
 ];
 
-export const inProgress = {
-  name: "SEIVA",
-  kind: "produto autoral · em desenvolvimento",
-  summary:
-    "Plataforma de estudos que combina IA e gamificação para ajudar a manter foco e constância. É onde estou juntando o que aprendo em desenvolvimento com o que estudo em Ciência de Dados.",
-};
+export type InProgress = { name: string; kind: string; summary: string };
+
+export const inProgress: InProgress[] = [
+  {
+    name: "SEIVA",
+    kind: "produto autoral",
+    summary:
+      "Plataforma de estudos que combina IA e gamificação para ajudar a manter foco e constância. É onde estou juntando o que aprendo em desenvolvimento com o que estudo em Ciência de Dados.",
+  },
+  {
+    name: "FoodWise AI",
+    kind: "ciência de dados",
+    summary:
+      "Análise e previsão de demanda com Python, Pandas e scikit-learn. É o projeto em que estou aplicando o que aprendo na graduação em Ciência de Dados.",
+  },
+];

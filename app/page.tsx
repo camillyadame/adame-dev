@@ -8,7 +8,7 @@ import Mascot from "@/components/Mascot";
 import { Glyphs, Ticker } from "@/components/Decor";
 import { Pill, SectionTitle, Tag } from "@/components/ui";
 import { projects, inProgress, type Project } from "@/data/projects";
-import { site, stack } from "@/data/site";
+import { education, experience, site, stack } from "@/data/site";
 
 export default function Home() {
   return (
@@ -47,15 +47,21 @@ function Hero() {
           Desenvolvedora full-stack e estudante de Ciência de Dados. Construo
           sistemas web de ponta a ponta, do banco de dados à interface.
         </p>
-        <p data-reveal style={{ "--d": "270ms" } as React.CSSProperties} className="mt-6 flex items-center gap-2.5 font-mono text-[13px] text-muted">
-          <span className="h-2 w-2 rounded-full bg-lime shadow-[0_0_12px_rgba(184,255,90,0.7)]" aria-hidden="true" />
-          aberta a oportunidades · {site.location}
+        <p data-reveal style={{ "--d": "270ms" } as React.CSSProperties} className="mt-6 flex gap-2.5 font-mono text-[13px] text-muted">
+          <span className="mt-1 h-2 w-2 shrink-0 self-start rounded-full bg-lime shadow-[0_0_12px_rgba(184,255,90,0.7)]" aria-hidden="true" />
+          <span>
+            aberta a vagas · {site.modality}
+            <span className="block text-muted/80 sm:inline"><span className="hidden sm:inline"> · </span>{site.location}</span>
+          </span>
         </p>
         <div data-reveal style={{ "--d": "360ms" } as React.CSSProperties} className="mt-8 flex flex-wrap gap-3">
           <Pill href="/#projetos" tone="lime">
             ver projetos ↓
           </Pill>
-          <Pill href={site.linkedin} tone="pink" external>
+          <Pill href={site.cv} tone="pink">
+            currículo
+          </Pill>
+          <Pill href={site.linkedin} tone="lilac" external>
             linkedin
           </Pill>
           <Pill href={site.github} tone="lilac" external>
@@ -88,9 +94,17 @@ function Projects() {
         </div>
 
         <div data-reveal className="mt-20 rounded-lg border border-dashed border-line-strong p-6 sm:p-8">
-          <p className="font-mono text-[13px] text-pink">{inProgress.kind}</p>
-          <h3 className="mt-2 font-mono text-xl text-white">{inProgress.name}</h3>
-          <p className="mt-3 max-w-2xl leading-relaxed text-text/90">{inProgress.summary}</p>
+          <p className="font-mono text-[13px] text-pink">em construção</p>
+          <div className="mt-4 grid gap-8 md:grid-cols-2">
+            {inProgress.map((p) => (
+              <div key={p.name}>
+                <h3 className="font-mono text-xl text-white">
+                  {p.name} <span className="text-[13px] text-muted">· {p.kind}</span>
+                </h3>
+                <p className="mt-3 leading-relaxed text-text/90">{p.summary}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -198,16 +212,44 @@ function About() {
               dia, com regras no servidor, validação e cuidado com segurança.
             </p>
             <p>
-              Agora estou aprofundando a parte de dados e IA, na faculdade e no{" "}
+              Agora estou aprofundando a parte de dados e IA, na faculdade, no{" "}
+              <span className="text-white">FoodWise AI</span> e no{" "}
               <span className="text-white">SEIVA</span>, meu projeto autoral.
               Procuro uma oportunidade em um time onde eu possa crescer como
               desenvolvedora e contribuir com produtos de verdade.
             </p>
-            <p className="font-mono text-[13px] text-muted">
-              {site.location}
-            </p>
+            <dl className="grid gap-5 border-t border-line pt-6 font-mono text-[13px] sm:grid-cols-2">
+              <div>
+                <dt className="text-muted">formação</dt>
+                <dd className="mt-1 text-text">
+                  {education.course} · {education.school}
+                  <span className="block text-muted">{education.status}</span>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-muted">onde trabalho</dt>
+                <dd className="mt-1 text-text">
+                  {site.modality}
+                  <span className="block text-muted">hoje em {site.location}; residência disponível em São José do Rio Preto</span>
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
+
+        <h3 data-reveal className="mt-16 font-mono text-[13px] text-muted md:ml-[16.5rem]">trajetória</h3>
+        <ol data-reveal className="mt-5 border-l border-line-strong pl-6 md:ml-[16.5rem]">
+          {experience.map((t) => (
+            <li key={t.org} className="relative pb-8 last:pb-0">
+              <span aria-hidden="true" className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full border border-lime bg-void" />
+              <p className="font-mono text-[12px] text-lime">{t.when}</p>
+              <h3 className="mt-1 font-mono text-[15px] font-normal text-white">
+                {t.org} <span className="text-muted">· {t.role}</span>
+              </h3>
+              <p className="mt-1.5 max-w-[34rem] text-[15px] leading-relaxed text-text/90">{t.text}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -223,7 +265,7 @@ function Stack() {
         ]}
       />
       <div className="wrap">
-        <SectionTitle tone="lilac" note="o que usei nos projetos acima">
+        <SectionTitle tone="lilac" note="o que usei nos projetos e o que estou estudando">
           stack
         </SectionTitle>
         <dl className="divide-y divide-line border-y border-line">
@@ -262,9 +304,10 @@ function Contact() {
       <div className="wrap" data-reveal>
         <SectionTitle>contato</SectionTitle>
         <p className="max-w-[36rem] text-[17px] leading-relaxed text-text">
-          Estou aberta a vagas como desenvolvedora. Se você está contratando ou
-          quer conversar sobre algum dos projetos, o caminho mais rápido é o
-          e-mail ou o LinkedIn.
+          Estou aberta a vagas como desenvolvedora, em formato remoto ou
+          híbrido, e avalio propostas com mudança de cidade. Se você está
+          contratando ou quer conversar sobre algum dos projetos, o caminho
+          mais rápido é o e-mail ou o LinkedIn.
         </p>
         <a
           href={`mailto:${site.email}`}
@@ -278,6 +321,9 @@ function Contact() {
           </Pill>
           <Pill href={site.github} tone="lilac" external>
             github
+          </Pill>
+          <Pill href={site.cvPdf} tone="lime" external>
+            currículo em pdf
           </Pill>
         </div>
         <p className="mt-10 text-[15px] text-muted">
