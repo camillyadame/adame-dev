@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AsciiField from "@/components/AsciiField";
 import ScrollFx from "@/components/ScrollFx";
+import Mascot from "@/components/Mascot";
 import { Glyphs, Ticker } from "@/components/Decor";
 import { Pill, SectionTitle, Tag } from "@/components/ui";
 import { projects, inProgress, type Project } from "@/data/projects";
@@ -180,14 +181,8 @@ function About() {
       <div className="wrap">
         <SectionTitle tone="pink">sobre</SectionTitle>
         <div className="grid gap-10 md:grid-cols-[13rem_1fr] md:gap-14">
-          <div data-reveal className="float relative mx-auto h-64 w-48 overflow-hidden rounded-lg border border-line bg-gradient-to-b from-surface-2 to-surface md:mx-0 md:h-72 md:w-52">
-            <Image
-              src="/brand/mascot-transparent.png"
-              alt="Avatar ilustrado da Camilly"
-              fill
-              sizes="208px"
-              className="object-contain object-bottom pt-4"
-            />
+          <div data-reveal className="pt-10 md:pt-12">
+            <Mascot />
           </div>
           <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="max-w-[38rem] space-y-5 text-[17px] leading-relaxed text-text">
             <p>
